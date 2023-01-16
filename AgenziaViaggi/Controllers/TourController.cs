@@ -18,22 +18,17 @@ namespace AgenziaViaggi.Controllers
 
         }
 
-        [HttpGet]
         public IActionResult Details(int id)
         {
             bool FunzioneDiRicercaPostById(Tour tour)
             {
                 return tour.Id == id;
+
             }
 
 
             using (TourContext db = new TourContext())
             {
-                // LINQ: syntax methods
-                Tour pizzaTrovato = db.Tours
-                    .Where(SingleTourInDB => SingleTourInDB.Id == id)
-                    .FirstOrDefault();
-
                 // LINQ: query syntax
                 Tour tourFound =
                     (from Tour in db.Tours

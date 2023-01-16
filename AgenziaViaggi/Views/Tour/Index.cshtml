@@ -18,15 +18,15 @@ else
                     <div class="card-body p-0">
                         <h4 class="card-title text-bg-warning text-white p-3">@tour.Title</h4>
 
-                        <p class="card-text text-center fw-lighter p-4">
+                        <p class="card-text text-center fw-lighter p-4 text-white">
                             @tour.Description
                         </p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <p class="text-warning fw-semibold"> 2 days - 2 destinations</p>
-                            <p> <b>@tour.Price</b> <small class="text-muted"> /persona </small></p>
-                            <a class="btn btn-primary" href="@Url.Action("Detail", "Tour", new { id = @tour.Id } )" role="button">Details</a>
+                            <p class="text-warning fw-semibold">@tour.Days giorni - @tour.Destinations</p>
+                                <p> <b>@tour.Price €</b> <small class="text-muted"> /persona </small></p>
+                            <a class="btn btn-primary" href="@Url.Action("Details", "Tour", new { id = @tour.Id } )" role="button">Dettagli</a>
                         </li>
 
                     </ul>
