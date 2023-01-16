@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AgenziaViaggi.Controllers
 {
-    public class TourController1 : Controller
+    public class TourController : Controller
     {
 
         public IActionResult Index()
