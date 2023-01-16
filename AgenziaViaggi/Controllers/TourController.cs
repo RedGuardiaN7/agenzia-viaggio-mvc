@@ -6,7 +6,7 @@ namespace AgenziaViaggi.Controllers
 {
     public class TourController1 : Controller
     {
-     
+
         public IActionResult Index()
         {
             using (TourContext db = new TourContext())
