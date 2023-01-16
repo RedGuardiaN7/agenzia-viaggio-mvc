@@ -39,13 +39,12 @@ else
                             <li class="list-group-item">
                                 <p class="text-warning fw-semibold">@tour.Days giorni - @tour.Destinations</p>
                                 <p> <b>@tour.Price €</b> <small class="text-muted"> /persona </small></p>
-                                <a class="btn btn-primary" href="@Url.Action("Details", "Tour", new { id = @tour.Id } )" role="button">Dettagli</a>
                             </li>
 
                         </ul>
 
                         <div class="bottoni-action">
-                            <a class="btn btn-primary m-3" href="@Url.Action( "Dettagli", "Pizza", new { nome = tour.Title } )" role="button">
+                            <a class="btn btn-primary m-3" href="@Url.Action( "Details", "Tour", new { nome = tour.Title } )" role="button">
 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
