@@ -6,11 +6,7 @@ namespace AgenziaViaggi.Controllers
 {
     public class TourController1 : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+     
         public IActionResult Index()
         {
             using (TourContext db = new TourContext())
@@ -33,7 +29,7 @@ namespace AgenziaViaggi.Controllers
 
             using (TourContext db = new TourContext())
             {
-                // LINQ: syntax methos
+                // LINQ: syntax methods
                 Tour pizzaTrovato = db.Tours
                     .Where(SingleTourInDB => SingleTourInDB.Id == id)
                     .FirstOrDefault();
@@ -51,7 +47,7 @@ namespace AgenziaViaggi.Controllers
                     return View(tourFound);
                 }
 
-                return NotFound("la pizza con l'id cercato non esiste!");
+                return NotFound("Il viaggio con l'id cercato non esiste!");
 
             }
 
@@ -90,7 +86,7 @@ namespace AgenziaViaggi.Controllers
 
                 if (postToUpdate == null)
                 {
-                    return NotFound("Il post non è stato trovato");
+                    return NotFound("Il viaggio non è stato trovato");
                 }
 
                 return View("Update", postToUpdate);
@@ -127,7 +123,7 @@ namespace AgenziaViaggi.Controllers
                 }
                 else
                 {
-                    return NotFound("Il post che volevi modificare non è stato trovato!");
+                    return NotFound("Il viaggio che volevi modificare non è stato trovato!");
                 }
             }
 
