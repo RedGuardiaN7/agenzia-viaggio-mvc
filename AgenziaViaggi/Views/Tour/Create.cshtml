@@ -1,4 +1,4 @@
-﻿@model 
+﻿@model Tour
 
 <div class="container">
 
@@ -7,26 +7,26 @@
 
         <div class="mb-3">
             <label>Nome:</label>
-            <input asp-for="name" type="text" class="form-control" />
-            <span asp-validation-for="name" class="text-danger"></span>
+            <input asp-for="Title" type="text" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label>Descrizione:</label>
-            <textarea asp-for="description" rows="10" class="d-block w-100"></textarea>
-            <span asp-validation-for="description" class="text-danger"></span>
+            <textarea asp-for="Description" rows="10" class="d-block w-100"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label>Prezzo:</label>
-            <input asp-for="price" type="text" class="form-control" />
-            <span asp-validation-for="price" class="text-danger"></span>
+            <input asp-for="Price" type="text" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label>Path Immagine:</label>
-            <input asp-for="photo" type="text" class="form-control" />
-            <span asp-validation-for="photo" class="text-danger"></span>
+            <input asp-for="Image" type="text" class="form-control" />
+            <span asp-validation-for="Image" class="text-danger"></span>
         </div>
 
         <button type="submit" class="btn btn-primary">Salva</button>

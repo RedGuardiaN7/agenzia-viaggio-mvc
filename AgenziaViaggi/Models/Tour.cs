@@ -24,11 +24,11 @@ namespace AgenziaViaggi.Models
 
         }
         
-        public Tour(int id, string title, string descriprion, string image, int price, string destinations, int days)
+        public Tour(int id, string title, string description, string image, int price, string destinations, int days)
         {
             Id = id;
             Title = title;
-            Description = descriprion;
+            Description = description;
             Image = image;
             Price = price;
             Destinations = destinations;
