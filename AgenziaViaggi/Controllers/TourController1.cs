@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AgenziaViaggi.Database;
+using AgenziaViaggi.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AgenziaViaggi.Controllers
 {
@@ -16,11 +18,11 @@ namespace AgenziaViaggi.Controllers
 
     public IActionResult Index()
     {
-        using (PizzeriaContext db = new PizzeriaContext())
+        using (TourContext db = new TourContext())
         {
-            List<Pizza> listaDellePizza = db.Pizzas.OrderBy(title => title.Title).ToList<Pizza>();
+            List<Tour> listTour = db.Tours.OrderBy(title => title.Title).ToList<Tour>();
 
-            ; return View("Index", listaDellePizza);
+            ; return View("Index", listTour);
         }
 
     }
@@ -28,30 +30,30 @@ namespace AgenziaViaggi.Controllers
     [HttpGet]
     public IActionResult Details(int id)
     {
-        bool FunzioneDiRicercaPostById(Pizza pizza)
+        bool FunzioneDiRicercaPostById(Tour tour)
         {
-            return pizza.Id == id;
+            return tour.Id == id;
         }
 
 
-        using (PizzeriaContext db = new PizzeriaContext())
+        using (TourContext db = new TourContext())
         {
             // LINQ: syntax methos
-            Pizza pizzaTrovato = db.Pizzas
-                .Where(SingolaPizzaNelDb => SingolaPizzaNelDb.Id == id)
+            Tour pizzaTrovato = db.Tours
+                .Where(SingleTourInDB => SingleTourInDB.Id == id)
                 .FirstOrDefault();
 
             // LINQ: query syntax
-            Pizza pizzaTrovata =
-                (from Pizza in db.Pizzas
-                 where Pizza.Id == id
-                 select Pizza).FirstOrDefault<Pizza>();
+            Tour tourFound =
+                (from Tour in db.Tours
+                 where Tour.Id == id
+                 select Tour).FirstOrDefault<Tour>();
 
 
 
-            if (pizzaTrovato != null)
+            if (tourFound != null)
             {
-                return View(pizzaTrovato);
+                return View(tourFound);
             }
 
             return NotFound("la pizza con l'id cercato non esiste!");
@@ -68,16 +70,16 @@ namespace AgenziaViaggi.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(Pizza formData)
+    public IActionResult Create(Tour formData)
     {
         if (!ModelState.IsValid)
         {
             return View("Create", formData);
         }
 
-        using (PizzeriaContext db = new PizzeriaContext())
+        using (TourContext db = new TourContext())
         {
-            db.Pizzas.Add(formData);
+            db.Tours.Add(formData);
             db.SaveChanges();
         }
 
@@ -87,9 +89,9 @@ namespace AgenziaViaggi.Controllers
     [HttpGet]
     public IActionResult Update(int id)
     {
-        using (PizzeriaContext db = new PizzeriaContext())
+        using (TourContext db = new TourContext())
         {
-            Pizza postToUpdate = db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+            Tour postToUpdate = db.Tours.Where(tour => tour.Id == id).FirstOrDefault();
 
             if (postToUpdate == null)
             {
@@ -104,23 +106,25 @@ namespace AgenziaViaggi.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Update(Pizza formData)
+    public IActionResult Update(Tour formData)
     {
         if (!ModelState.IsValid)
         {
             return View("Update", formData);
         }
 
-        using (PizzeriaContext db = new PizzeriaContext())
+        using (TourContext db = new TourContext())
         {
-            Pizza postToUpdate = db.Pizzas.Where(articolo => articolo.Id == formData.Id).FirstOrDefault();
+            Tour postToUpdate = db.Tours.Where(tourUpdate => tourUpdate.Id == formData.Id).FirstOrDefault();
 
             if (postToUpdate != null)
             {
                 postToUpdate.Title = formData.Title;
                 postToUpdate.Description = formData.Description;
                 postToUpdate.Image = formData.Image;
-                postToUpdate.Prezzo = formData.Prezzo;
+                postToUpdate.Days = formData.Days;
+                postToUpdate.Destinations = formData.Destinations;
+                postToUpdate.Price = formData.Price;
 
                 db.SaveChanges();
 
@@ -139,13 +143,13 @@ namespace AgenziaViaggi.Controllers
     [ValidateAntiForgeryToken]
     public IActionResult Delete(int id)
     {
-        using (PizzeriaContext db = new PizzeriaContext())
+        using (TourContext db = new TourContext())
         {
 
-            Pizza pizzaToDelete = db.Pizzas.Where(Pizza => Pizza.Id == id).FirstOrDefault();
-            if (pizzaToDelete != null)
+            Tour tourToDelete = db.Tours.Where(Tour => Tour.Id == id).FirstOrDefault();
+            if (tourToDelete != null)
             {
-                db.Pizzas.Remove(pizzaToDelete);
+                db.Tours.Remove(tourToDelete);
                 db.SaveChanges();
             }
             return RedirectToAction("Index");
