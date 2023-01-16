@@ -1,0 +1,84 @@
+﻿@model List<Tour>
+
+@if (Model.Count == 0)
+{
+    <h3>No Vacation Packages available!</h3>
+}
+else
+{
+    <div class="container">
+        <div class="row main row  ">
+
+            @foreach (Tour tour in Model)
+            {
+
+                <div class="col-md-6 col-xl-4">
+                    <div class="card shadow bg-body rounded ">
+                        <img src="@tour.Image" class="card-img-top" alt="SEA">
+                        <div class="card-body p-0">
+                            <h4 class="card-title text-bg-warning text-white p-3">@tour.Title</h4>
+
+                            <p class="card-text text-center fw-lighter p-4 text-white">
+                                @tour.Description
+                            </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <p class="text-warning fw-semibold">@tour.Days giorni - @tour.Destinations</p>
+                                <p> <b>@tour.Price €</b> <small class="text-muted"> /persona </small></p>
+                                <a class="btn btn-primary" href="@Url.Action("Details", "Tour", new { id = @tour.Id } )" role="button">Dettagli</a>
+                            </li>
+
+                        </ul>
+
+                        <div class="bottoni-action">
+                            <a class="btn btn-primary m-3" href="@Url.Action( "Dettagli", "Pizza", new { nome = tour.Title } )" role="button">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+
+                            </a>
+
+
+
+                            <a class="btn btn-warning m-3" href="@Url.Action( "Update", "Tour", new { nome = tour.Title } )" role="button">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity">
+                                    <polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon>
+                                    <line x1="3" y1="22" x2="21" y2="22"></line>
+                                </svg>
+
+                            </a>
+
+
+                            <form asp-controller="Pizza" asp-action="Remove" asp-route-nome="@tour.Title" method="post">
+                                <button type="submit" class="btn btn-danger m-3">
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity">
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                    </svg>
+
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            }
+
+
+
+
+
+        </div>
+
+    </div>
+
+}
