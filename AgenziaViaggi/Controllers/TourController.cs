@@ -147,7 +147,7 @@ namespace AgenziaViaggi.Controllers
                     db.Tours.Remove(tourToDelete);
                     db.SaveChanges();
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
         }
 
