@@ -2,12 +2,12 @@
 
 <div class="container">
 
-    <form asp-controller="Pizza" asp-action="Update" method="post" class="title-card bg-tabella py-4 px-4">
+    <form asp-controller="Tour" asp-action="Update" method="post" class="title-card bg-tabella py-4 px-4">
         @Html.AntiForgeryToken()
 
         <div class="mb-3">
             <label>Nome:</label>
-            <input asp-for="Title" type="text" class="form-control" disabled />
+            <input asp-for="Title" type="text" class="form-control" />
             <span asp-validation-for="Title" class="text-danger"></span>
         </div>
 
@@ -41,7 +41,7 @@
             <span asp-validation-for="Image" class="text-danger"></span>
         </div>
 
-        <button type="submit" class="btn mybutton">Aggiorna</button>
+        <button type="submit" class="btn btn-info">Aggiorna</button>
     </form>
 
 </div>
