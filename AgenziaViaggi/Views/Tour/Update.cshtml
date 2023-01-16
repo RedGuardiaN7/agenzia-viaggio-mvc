@@ -18,6 +18,18 @@
         </div>
 
         <div class="mb-3">
+            <label>Destinazione:</label>
+            <input asp-for="Destinations" type="text" class="form-control" />
+            <span asp-validation-for="Destinations" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label>Giorni:</label>
+            <input asp-for="Days" type="text" class="form-control" />
+            <span asp-validation-for="Days" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
             <label>Prezzo:</label>
             <input asp-for="Price" type="text" class="form-control" />
             <span asp-validation-for="Price" class="text-danger"></span>
