@@ -18,6 +18,15 @@ namespace AgenziaViaggi.Controllers
 
         }
 
+        public IActionResult Admin()
+        {
+            using (TourContext db = new TourContext())
+            {
+                List<Tour> listTour = db.Tours.OrderBy(title => title.Title).ToList<Tour>();
+                return View("Admin", listTour);
+            }
+        }
+
         public IActionResult Details(int id)
         {
             bool FunzioneDiRicercaPostById(Tour tour)
